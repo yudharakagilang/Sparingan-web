@@ -33,9 +33,7 @@
 
     <div class="limiter">
         <div class="container-login100">
-        <button onclick="logout()" type="button" class="btn btn-danger" data-toggle="modal">
-                                Logout
-                            </button>
+       
             <div class="wrap-login100">
                 <div  class="login100-form-title" style="background-image: url(images/bg-01.png);">
                     <span id="div_reload" class="login100-form-title-1">
@@ -50,14 +48,16 @@
                 <br>
 
                 <p align="center">
-                    <button onclick="window.location.href = 'carilawan.php';" id="button_carilawan" class="login100-form-btn" href="carilawan.php" 
+                    <button onclick="window.location.href = 'carilawan.html';" id="button_carilawan" class="login100-form-btn" href="carilawan.html" 
                         style="margin-left:auto;margin-right:auto;display:block;margin-top:22%;margin-bottom:0%"> <span
                             class="login100-form-title-1">
                             Cari Lawan
                         </span></button>
                         
                 </p>
-                
+                 <button onclick="logout()" type="button" class="btn btn-danger" data-toggle="modal">
+                                Logout
+                            </button>
                 <br>
             </div>
         </div>
@@ -79,6 +79,7 @@
     <script src="vendor/countdowntime/countdowntime.js"></script>
     <!--===============================================================================================-->
     <script src="js/main.js"></script>
+     <script src="logout.js"></script>
 
 </body>
 
@@ -87,7 +88,7 @@
 
 if (localStorage.getItem('id_login')==null){
 
-    window.location.replace("index.php");
+    window.location.replace("index.html");
 }
 
 if (localStorage.getItem('isScheduled')=='false'){
@@ -105,18 +106,7 @@ if (localStorage.getItem('isScheduled')=='false'){
 
 
 
-function logout() {
-localStorage.removeItem('id_login')
-localStorage.removeItem('email_login')
-localStorage.removeItem('phoneNumber_login')
-localStorage.removeItem('name_login')
-localStorage.removeItem('isScheduled')
-localStorage.removeItem('-alreadyMakeSchedule')
 
-
-window.location.replace("index.php")
-
-}
 var name=localStorage.getItem('name_login')
 
 $("#div_reload").html("HAI,&nbsp"+name)

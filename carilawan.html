@@ -84,8 +84,14 @@
                         <button class="login100-form-btn">
                             Cari Lawan
                         </button>
+                      
+                            
                     </div>
+                       
                 </form>
+                   <button align="center" onclick="logout()" type="button" class="btn btn-danger" data-toggle="modal">
+                                Logout
+                            </button
             </div>
         </div>
     </div>
@@ -105,6 +111,7 @@
     <script src="vendor/countdowntime/countdowntime.js"></script>
     <!--===============================================================================================-->
     <script src="js/main.js"></script>
+       <script src="logout.js"></script>
 
 </body>
 
@@ -114,7 +121,7 @@
  
 
  if((localStorage.getItem('isScheduled')=="true") || (localStorage.getItem('-alreadyMakeSchedule')=="true")){
-    window.location.replace("main.php");
+    window.location.replace("main.html");
     alert("Masih dalam permainan atau masih menunggu penjadwalan")
  }
 
@@ -156,8 +163,8 @@
                     //localStorage.setItem('email_login', data.email);
                     alert("success")
                     localStorage.setItem('-alreadyMakeSchedule',true)
-                    window.location.replace("main.php");
-                    //window.location.replace("main.php");
+                    window.location.replace("main.html");
+                    //window.location.replace("main.html");
                 },
                 error: (jqXHR, status, errorThrown) => {
                     console.log(jqXHR)
