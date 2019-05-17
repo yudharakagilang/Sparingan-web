@@ -114,17 +114,14 @@
 				data: param,
 				success: (data, status, jqXHR) => {
 					console.log(data.id)
+					alert("success")
 					localStorage.setItem('id_login', data.id);
 					localStorage.setItem('name_login', data.name);
 					localStorage.setItem('phoneNumber_login', data.phoneNumber);
 					localStorage.setItem('email_login', data.email);
 					localStorage.setItem('isScheduled',data.isScheduled);
-					localStorage.setItem('-alreadyMakeSchedule',false);
-					alert("success")
+					localStorage.setItem('scheduleID',data.scheduleID);
 					window.location.replace("main.html");
-
-				
-				
 				},
 				error: (jqXHR, status, errorThrown) => {
 					console.log(jqXHR)
@@ -133,15 +130,7 @@
 				dataType: 'json',
 				timeout: 10000
 			})
-
-
-			
-
-
-		
 			return false;
-
 		});
-
 	});
 </script>

@@ -91,7 +91,7 @@
                 </form>
                    <button align="center" onclick="logout()" type="button" class="btn btn-danger" data-toggle="modal">
                                 Logout
-                            </button
+                    </button
             </div>
         </div>
     </div>
@@ -116,18 +116,9 @@
 </body>
 
 </html>
-
 <script>
- 
-
- if((localStorage.getItem('isScheduled')=="true") || (localStorage.getItem('-alreadyMakeSchedule')=="true")){
-    window.location.replace("main.html");
-    alert("Masih dalam permainan atau masih menunggu penjadwalan")
- }
-
     $(document).ready(function () {
         $('#findmatchform').submit(function () {
-
             var jsDate = new Date($('#date-input').val());
             var day = jsDate.getDate();
             var month = jsDate.getMonth();
@@ -136,8 +127,6 @@
             console.log(day)
             console.log(month)
             console.log(year)
-
-
 
             let param = {
                 userid: localStorage.getItem('id_login'),
@@ -148,23 +137,13 @@
                 date : year
             }
 
-
-     
             $.ajax({
                 type: 'POST',
                 url: 'http://localhost:8080/findmatch',
                 data: param,
                 success: (data, status, jqXHR) => {
-                    //console.log(data.id)
-                    // put the contents of the file into a variable
-                    //localStorage.setItem('id_login', data.id);
-                    //localStorage.setItem('name_login', data.name);
-                    //localStorage.setItem('phoneNumber_login', data.phoneNumber);
-                    //localStorage.setItem('email_login', data.email);
                     alert("success")
-                    localStorage.setItem('-alreadyMakeSchedule',true)
                     window.location.replace("main.html");
-                    //window.location.replace("main.html");
                 },
                 error: (jqXHR, status, errorThrown) => {
                     console.log(jqXHR)
@@ -173,7 +152,6 @@
                 dataType: 'json',
                 timeout: 10000
             })
-       
             return false;
         });
 
