@@ -90,6 +90,7 @@
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 	<!--===============================================================================================-->
 	<script src="js/main.js"></script>
+	<script src="get-user-schedule.js"></script>
 
 </body>
 
@@ -121,6 +122,7 @@
 					localStorage.setItem('email_login', data.email);
 					localStorage.setItem('isScheduled',data.isScheduled);
 					localStorage.setItem('scheduleID',data.scheduleID);
+					getschedule()
 					window.location.replace("main.html");
 				},
 				error: (jqXHR, status, errorThrown) => {

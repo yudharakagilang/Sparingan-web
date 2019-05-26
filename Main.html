@@ -36,11 +36,14 @@
             <div class="wrap-login100">
                 <div  class="login100-form-title" style="background-image: url(images/bg-01.png);">
                     <div id="div_nama"></div>
+                    <h1>
                          <script type="text/javascript">
-                            var text = "Hello, "
+                            var text = " Hello,"
                             document.getElementById('div_nama').innerHTML = text.concat(localStorage.getItem("name_login"), "!");
                         </script>
                 </div>
+
+                
                 <div>
                     <br>
                     <font id="status" size="+4">&nbsp&nbsp&nbspBelum Mempunyai Jadwal </font>
@@ -106,27 +109,17 @@
     <!--===============================================================================================-->
     <script src="js/main.js"></script>
      <script src="logout.js"></script>
+     <script src="get-user-schedule.js"></script>
 
 </body>
 
 </html>
 <script>
-$.get("http://localhost:8080/getuser/" + localStorage.getItem('id_login'), function( data ){
-    localStorage.setItem('id_login', data.id);
-    localStorage.setItem('name_login', data.name);
-    localStorage.setItem('phoneNumber_login', data.phoneNumber);
-    localStorage.setItem('email_login', data.email);
-    localStorage.setItem('isScheduled',data.isScheduled);
-    localStorage.setItem('scheduleID',data.scheduleID);                
-}, "json" );
 
-$.get("http://localhost:8080/schedule/" + localStorage.getItem('scheduleID'), function( data ){
-    localStorage.setItem('sport', data.sport);
-    localStorage.setItem('location', data.location);
-    localStorage.setItem('date', data.date);
-    localStorage.setItem('user1name', data.user1.name);
-    localStorage.setItem('user2name', data.user2.name);
-}, "json" );
+
+
+getuser();
+
 
 if (localStorage.getItem('id_login')==null){
     window.location.replace("index.html");
@@ -138,12 +131,18 @@ if (localStorage.getItem('isScheduled')=='false'){
           document.getElementById("buttonCari").style.display = "block";
           document.getElementById("buttonCancel").style.display = "none";
           document.getElementById("buttonFinish").style.display = "none";
+          document.getElementById("div_date").style.display = "none";
+          document.getElementById("div_sport").style.display = "none";
+          document.getElementById("div_location").style.display = "none";
     }
     else{
         $("#status").html("&nbsp&nbsp&nbspMenunggu Jadwal!")
           document.getElementById("buttonCari").style.display = "none";
           document.getElementById("buttonCancel").style.display = "block";
           document.getElementById("buttonFinish").style.display = "none";
+          document.getElementById("div_date").style.display = "none";
+          document.getElementById("div_sport").style.display = "none";
+          document.getElementById("div_location").style.display = "none";
     }
 }
 else{
@@ -151,7 +150,9 @@ else{
         document.getElementById("buttonCari").style.display = "none";
         document.getElementById("buttonCancel").style.display = "none";
         document.getElementById("buttonFinish").style.display = "block";
-        document.getElementById("status_name","status_date","status_sport","status_lokasi").style.display = "block";
+        document.getElementById("div_date").style.display = "block";
+        document.getElementById("div_sport").style.display = "block";
+        document.getElementById("div_location").style.display = "block";
 }
 
 function buttonfunction () {
@@ -165,10 +166,13 @@ function buttonfunction () {
         data: param,
         success: (data, status, jqXHR) => {
             alert("success")
+            getuser();
+            window.location.replace("Main.html");
         },
         error: (jqXHR, status, errorThrown) => {
             console.log(jqXHR)
             alert("failed")
+            window.location.replace("Main.html");
         },
         dataType: 'json',
         timeout: 10000
