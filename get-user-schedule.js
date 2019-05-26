@@ -22,12 +22,10 @@ function getschedule(){
             localStorage.setItem('sport', data.sport);
             localStorage.setItem('location', data.location);
             localStorage.setItem('date', data.date);
-            if(localStorage.getItem('user1name')!=null){
             localStorage.setItem('user1name', data.user1.name);
-            }
-            if(localStorage.getItem('user2name')!=null){
             localStorage.setItem('user2name', data.user2.name);
-            }
+            localStorage.setItem('user2id', data.user2.id);
+            
             
         }, "json" );
 }

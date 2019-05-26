@@ -72,14 +72,14 @@
                     </button>
                 </p>
                 <p id="buttonCancel" align="center">
-                    <button onClick = "buttonfunction()" id="button_carilawan" class="login100-form-btn" href="carilawan.html" style="margin-left:auto;margin-right:auto;display:block;margin-top:10%;margin-bottom:0%">
+                    <button onClick = "buttonfunctioncancel()" id="button_carilawan" class="login100-form-btn" href="carilawan.html" style="margin-left:auto;margin-right:auto;display:block;margin-top:10%;margin-bottom:0%">
                         <span class="login100-form-title-1">
                             Cancel Pertandingan!
                         </span>
                     </button>
                 </p>
                 <p id="buttonFinish" align="center">
-                    <button onClick = "buttonfunction()" id="button_carilawan" class="login100-form-btn" href="carilawan.html" style="margin-left:auto;margin-right:auto;display:block;margin-top:10%;margin-bottom:0%">
+                    <button onClick = "buttonfunctionfinsih()" id="button_carilawan" class="login100-form-btn" href="carilawan.html" style="margin-left:auto;margin-right:auto;display:block;margin-top:10%;margin-bottom:0%">
                         <span class="login100-form-title-1">
                             Finish Pertandingan!
                         </span>
@@ -155,7 +155,33 @@ else{
         document.getElementById("div_location").style.display = "block";
 }
 
-function buttonfunction () {
+function buttonfunctionfinsih () {
+    let param = {
+        scheduleid : localStorage.getItem('scheduleID'),
+        userid : localStorage.getItem('id_login')
+    }
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost:8080/finishmatch',
+        data: param,
+        success: (data, status, jqXHR) => {
+            alert("success")
+            getuser();
+            window.location.replace("feedback.html");
+
+        },
+        error: (jqXHR, status, errorThrown) => {
+            console.log(jqXHR)
+            alert("failed")
+            window.location.replace("Main.html");
+        },
+        dataType: 'json',
+        timeout: 10000
+    })
+    return false;
+}
+
+function buttonfunctioncancel () {
     let param = {
         scheduleid : localStorage.getItem('scheduleID'),
         userid : localStorage.getItem('id_login')
@@ -179,4 +205,5 @@ function buttonfunction () {
     })
     return false;
 }
+
 </script>

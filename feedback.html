@@ -107,10 +107,10 @@
   
 
             let param = {
-                //rating: $("#rating").val(),
-                rating: 1,
-                feedback: "mantab",
-                user2id:1
+                rating: $("#rating").val(),
+                feedback:$("#feedback").val() ,
+                user2id:localStorage.getItem('user2id'),
+                user1id:localStorage.getItem('id_login')
                 //uid:localStorage.getItem
             }
 
@@ -121,9 +121,8 @@
                 success: (data, status, jqXHR) => {
                   
                     alert("success")
-                    window.location.replace("main.html");
+                    window.location.replace("Main.html");
 
-        
 
                 },
                 error: (jqXHR, status, errorThrown) => {
@@ -131,7 +130,7 @@
                     alert("failed")
                 },
                 dataType: 'json',
-                timeout: 10000
+                //timeout: 10000
             })
 
             return false;
