@@ -109,7 +109,6 @@
             let param = {
                 rating: $("#rating").val(),
                 feedback:$("#feedback").val() ,
-                user2id:localStorage.getItem('user2id'),
                 user1id:localStorage.getItem('id_login')
                 //uid:localStorage.getItem
             }
@@ -119,11 +118,8 @@
                 url: 'http://localhost:8080/giverating',
                 data: param,
                 success: (data, status, jqXHR) => {
-                  
                     alert("success")
                     window.location.replace("Main.html");
-
-
                 },
                 error: (jqXHR, status, errorThrown) => {
                     console.log(jqXHR)
