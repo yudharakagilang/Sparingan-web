@@ -48,6 +48,16 @@
                     <br>
                     <font id="status" size="+4">&nbsp&nbsp&nbspBelum Mempunyai Jadwal </font>
                     <br>
+                      <div id="div_name"></div>
+                        <script type="text/javascript">
+                            var text = "&nbsp&nbsp&nbspName : "
+                            document.getElementById('div_name').innerHTML = text.concat(localStorage.getItem("user2name"));
+                        </script>
+                         <div id="div_phone"></div>
+                        <script type="text/javascript">
+                            var text = "&nbsp&nbsp&nbspPhone Number : "
+                            document.getElementById('div_phone').innerHTML = text.concat(localStorage.getItem("phoneNumber"));
+                        </script>
                     <div id="div_sport"></div>
                          <script type="text/javascript">
                             var text = "&nbsp&nbsp&nbspSport : "
@@ -63,6 +73,7 @@
                             var text = "&nbsp&nbsp&nbspLocation : "
                             document.getElementById('div_location').innerHTML = text.concat(localStorage.getItem("location"));
                         </script>
+                        
                 </div>
                 <p id="buttonCari" align="center">
                     <button onclick="window.location.href = 'carilawan.html';" id="button_carilawan" class="login100-form-btn" href="carilawan.html" style="margin-left:auto;margin-right:auto;display:block;margin-top:10%;margin-bottom:0%">
@@ -134,6 +145,8 @@ if (localStorage.getItem('isScheduled')=='false'){
           document.getElementById("div_date").style.display = "none";
           document.getElementById("div_sport").style.display = "none";
           document.getElementById("div_location").style.display = "none";
+          document.getElementById("div_name").style.display = "none";
+            document.getElementById("div_phone").style.display = "none";
     }
     else{
         $("#status").html("&nbsp&nbsp&nbspMenunggu Jadwal!")
@@ -143,6 +156,8 @@ if (localStorage.getItem('isScheduled')=='false'){
           document.getElementById("div_date").style.display = "none";
           document.getElementById("div_sport").style.display = "none";
           document.getElementById("div_location").style.display = "none";
+          document.getElementById("div_name").style.display = "none";
+            document.getElementById("div_phone").style.display = "none";
     }
 }
 else{
@@ -153,6 +168,8 @@ else{
         document.getElementById("div_date").style.display = "block";
         document.getElementById("div_sport").style.display = "block";
         document.getElementById("div_location").style.display = "block";
+        document.getElementById("div_name").style.display = "block";
+           document.getElementById("div_phone").style.display = "block";
 }
 
 function buttonfunctionfinsih () {

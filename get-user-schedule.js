@@ -11,8 +11,6 @@ function getuser (){
         }, "json" );
 
         
-
-
 }
 
 function getschedule(){
@@ -25,6 +23,8 @@ function getschedule(){
             localStorage.setItem('user1name', data.user1.name);
             localStorage.setItem('user2name', data.user2.name);
             localStorage.setItem('user2id', data.user2.id);
+            localStorage.setItem('enemyID', data.user1.enemyID);
+            localStorage.setItem('phoneNumber', data.user2.phoneNumber);
             
             
         }, "json" );
