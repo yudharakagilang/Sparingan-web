@@ -35,7 +35,7 @@
         <div class="container-login100">
             <div class="wrap-login100">
                 <div  class="login100-form-title" style="background-image: url(images/bg-01.png);">
-                    <div id="div_nama"></div>
+                    <span class="login100-form-title-1" id="div_nama"></span>
                     <h1>
                          <script type="text/javascript">
                             var text = " Hello,"
@@ -46,7 +46,7 @@
                 
                 <div>
                     <br>
-                    <font id="status" size="+4">&nbsp&nbsp&nbspBelum Mempunyai Jadwal </font>
+                    <font id="status" size="+2">&nbsp&nbsp&nbspBelum Mempunyai Jadwal </font>
                     <br>
                       <div id="div_name"></div>
                         <script type="text/javascript">
@@ -56,7 +56,7 @@
                          <div id="div_phone"></div>
                         <script type="text/javascript">
                             var text = "&nbsp&nbsp&nbspPhone Number : "
-                            document.getElementById('div_phone').innerHTML = text.concat(localStorage.getItem("phoneNumber"));
+                            document.getElementById('div_phone').innerHTML = text.concat(localStorage.getItem("user2_phoneNumber"));
                         </script>
                     <div id="div_sport"></div>
                          <script type="text/javascript">
@@ -99,6 +99,12 @@
                 <button onclick="logout()" type="button" class="btn btn-danger" data-toggle="modal">
                     Logout
                 </button>
+                <button onclick="history()" type="button" class="btn btn-success" data-toggle="modal">
+                    History
+                </button>
+                  <button onclick="getuser()" type="button" class="btn btn-info" data-toggle="modal">
+                    Refresh
+                </button>
                 <br>
             </div>
         </div>
@@ -122,15 +128,13 @@
      <script src="logout.js"></script>
      <script src="get-user-schedule.js"></script>
 
+
 </body>
 
 </html>
 <script>
-
-
-
-getuser();
-
+ 
+ 
 
 if (localStorage.getItem('id_login')==null){
     window.location.replace("index.html");
@@ -224,3 +228,5 @@ function buttonfunctioncancel () {
 }
 
 </script>
+
+

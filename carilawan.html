@@ -91,7 +91,12 @@
                 </form>
                    <button align="center" onclick="logout()" type="button" class="btn btn-danger" data-toggle="modal">
                                 Logout
-                    </button
+                    </button>
+                      </button>
+        <button onclick="main()" type="button" class="btn btn-warning" data-toggle="modal">
+                    Home
+      </button>
+                    
             </div>
         </div>
     </div>
@@ -142,9 +147,10 @@
                 url: 'http://localhost:8080/findmatch',
                 data: param,
                 success: (data, status, jqXHR) => {
-                    alert("success")
+                   
                     getuser();
-                    window.location.replace("main.html");
+                   // getschedule();
+                    //window.location.replace("main.html");
                 },
                 error: (jqXHR, status, errorThrown) => {
                     console.log(jqXHR)

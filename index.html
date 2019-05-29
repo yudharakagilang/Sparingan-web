@@ -115,15 +115,23 @@
 				data: param,
 				success: (data, status, jqXHR) => {
 					console.log(data.id)
-					alert("success")
 					localStorage.setItem('id_login', data.id);
 					localStorage.setItem('name_login', data.name);
 					localStorage.setItem('phoneNumber_login', data.phoneNumber);
 					localStorage.setItem('email_login', data.email);
 					localStorage.setItem('isScheduled',data.isScheduled);
 					localStorage.setItem('scheduleID',data.scheduleID);
+					if(localStorage.getItem("scheduleID")!="0" || localStorage.getItem("scheduleID"==null)){
+					console.log("masuk")
 					getschedule()
-					window.location.replace("main.html");
+					}
+					else {
+
+						alert("Success")
+
+						window.location.replace("Main.html");
+					}
+
 				},
 				error: (jqXHR, status, errorThrown) => {
 					console.log(jqXHR)

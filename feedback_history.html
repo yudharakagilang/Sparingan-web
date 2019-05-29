@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Rating</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--===============================================================================================-->
+  <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="css/util.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <!--===============================================================================================-->
+  <script src="logout.js"></script>
+</head>
+
+<body>
+
+  <div class="limiter">
+    <div class="container-login100">
+      <div class="wrap-login100">
+        <div class="login100-form-title" style="background-image: url(images/bg-01.png);">
+          <span class="login100-form-title-1">
+            Rating History
+          </span>
+        </div>
+
+        <div class="login100-form validate-form" id='ratingFeedback'>
+      </div>
+      <button onclick="logout()" type="button" class="btn btn-danger" data-toggle="modal">
+                    Logout
+      </button>
+        <button onclick="main()" type="button" class="btn btn-warning" data-toggle="modal">
+                    Home
+      </button>
+    </div>
+  </div>
+   
+  </div>
+
+  <!--===============================================================================================-->
+  <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/animsition/js/animsition.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/bootstrap/js/popper.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/select2/select2.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/daterangepicker/moment.min.js"></script>
+  <script src="vendor/daterangepicker/daterangepicker.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/countdowntime/countdowntime.js"></script>
+  <!--===============================================================================================-->
+  <script src="js/main.js"></script>
+  <script src="logout.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js "></script>
+
+<script>
+  var url = "http://localhost:8080/getratinghistory/"+ localStorage.getItem('id_login');
+
+
+  var myLength
+
+
+  $.ajax({
+    url: url,
+    dataType: "json",
+    method: "GET",
+    success: function (response) {
+
+
+      myLength = Object.keys(response).length;
+      
+      for (i=0;i<myLength;i++){
+        var div = document.createElement('div');
+        div.className='wrap-input100 validate-input m-b-26';
+        var span =document.createElement('span');
+        span.className='label-input100';
+        span.innerHTML=response[i].user.name;
+        var div2 =document.createElement('div');
+        div2.className='card'
+        var div3 = document.createElement('div');
+        div3.className='card-header';
+        div3.innerHTML='Rating :                 '+response[i].rating;
+        var div4 = document.createElement('div');
+        div4.className='card-body';
+        var blockquote = document.createElement('blockquote');
+        blockquote.className='blockquote mb-0';
+        var p = document.createElement('p');
+        p.innerHTML=" '' "+response[i].feedback+" '' ";
+        div.appendChild(span);
+        div.appendChild(div2);
+        div2.appendChild(div3);
+        div2.appendChild(div4);
+        div4.appendChild(blockquote);
+        blockquote.appendChild(p);
+        
+
+        document.getElementById("ratingFeedback").appendChild(div);
+
+      }
+
+      if (response==""){
+          alert("Belum ada Feedback")
+      }
+    }
+
+   
+
+
+  });
+
+  
+</script>
