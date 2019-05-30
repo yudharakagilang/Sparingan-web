@@ -125,11 +125,12 @@
     $(document).ready(function () {
         $('#findmatchform').submit(function () {
             var jsDate = new Date($('#date-input').val());
-            var day = jsDate.getDate();
-            var month = jsDate.getMonth();
             var year = jsDate.getFullYear();
+            var month = jsDate.getMonth();
+            var date = jsDate.getDate();
+
             console.log(jsDate)
-            console.log(day)
+            console.log(date)
             console.log(month)
             console.log(year)
 
@@ -137,9 +138,9 @@
                 userid: localStorage.getItem('id_login'),
                 sport: $("#sport").val(),
                 location: $("#location").val(),
-                year : day,
+                date : date,
                 month : month,
-                date : year
+                year : year
             }
 
             $.ajax({
@@ -147,7 +148,6 @@
                 url: 'http://localhost:8080/findmatch',
                 data: param,
                 success: (data, status, jqXHR) => {
-                   
                     getuser();
                    // getschedule();
                     //window.location.replace("main.html");
